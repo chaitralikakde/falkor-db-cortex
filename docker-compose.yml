@@ -1,0 +1,53 @@
+services:
+  falkordb:
+    image: falkordb/falkordb:latest
+    ports:
+      - "6379:6379"
+      # 3000 is used by Next.js locally; FalkorDB Browser is optional anyway
+      - "3002:3000"
+    volumes:
+      - falkordb_data:/var/lib/falkordb/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  api:
+    build: ./api
+    environment:
+      FALKORDB_HOST: falkordb
+      FALKORDB_PORT: "6379"
+      MODEL_API_KEY: ${MODEL_API_KEY:-}
+      # a company can opt in to this token from Sources -> GitHub; it is never sent to the browser
+      GITHUB_TOKEN: ${GITHUB_TOKEN:-}
+      GITHUB_REPOSITORY: ${GITHUB_REPOSITORY:-}
+      JIRA_SITE: ${JIRA_SITE:-}
+      JIRA_EMAIL: ${JIRA_EMAIL:-}
+      JIRA_API_TOKEN: ${JIRA_API_TOKEN:-}
+      LINEAR_API_KEY: ${LINEAR_API_KEY:-}
+      NOTION_TOKEN: ${NOTION_TOKEN:-}
+      DATA_DIR: /data
+    volumes:
+      # settings, skills and the model key survive a restart here
+      - api_data:/data
+    ports:
+      - "8000:8000"
+    depends_on:
+      falkordb:
+        condition: service_healthy
+
+  web:
+    build:
+      context: ./web
+      args:
+        API_URL: http://api:8000
+    ports:
+      # 3000 is already taken by the FalkorDB Browser.
+      - "8080:3000"
+    depends_on:
+      - api
+
+volumes:
+  falkordb_data:
+  api_data:

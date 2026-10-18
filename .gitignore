@@ -1,0 +1,13 @@
+.env
+.env.*
+*.md
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+.next/
+out/
+api/.data/
+*.log
+.DS_Store
+.cursor/
