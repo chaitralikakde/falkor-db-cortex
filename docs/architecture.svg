@@ -16,18 +16,18 @@
   <rect width="1280" height="820" fill="url(#bg)"/>
   <rect x="24" y="24" width="1232" height="772" rx="24" fill="#0e151d" stroke="#243041"/>
 
-  <text x="56" y="72" fill="#f5c16c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="18" font-weight="700">CORTEX</text>
-  <text x="148" y="72" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="16">architecture</text>
-  <text x="56" y="100" fill="#c5ced8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15">One company, one FalkorDB graph. Every answer is a path. No path, no guess.</text>
+  <text x="56" y="72" fill="#f5c16c" font-family="Arial, Helvetica, sans-serif" font-size="18" font-weight="700">CORTEX</text>
+  <text x="148" y="72" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="16">architecture</text>
+  <text x="56" y="100" fill="#c5ced8" font-family="Arial, Helvetica, sans-serif" font-size="15">One company, one FalkorDB graph. Every answer is a path. No path, no guess.</text>
 
   <!-- UI -->
   <g filter="url(#shadow)">
     <rect x="56" y="128" width="1168" height="168" rx="18" fill="#141c26" stroke="#2c3b4d"/>
   </g>
-  <text x="80" y="158" fill="#f5c16c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">BROWSER</text>
-  <text x="168" y="158" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Next.js · FalkorDB Canvas</text>
+  <text x="80" y="158" fill="#f5c16c" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">BROWSER</text>
+  <text x="168" y="158" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">Next.js  /  FalkorDB Canvas</text>
 
-  <g font-family="ui-sans-serif, system-ui, sans-serif" font-size="14" font-weight="600">
+  <g font-family="Arial, Helvetica, sans-serif" font-size="14" font-weight="600">
     <rect x="80" y="178" width="120" height="40" rx="10" fill="#1c2836" stroke="#f5c16c"/>
     <text x="140" y="203" fill="#f5c16c" text-anchor="middle">Ask</text>
     <rect x="212" y="178" width="120" height="40" rx="10" fill="#1c2836" stroke="#3dab6e"/>
@@ -39,55 +39,55 @@
     <rect x="638" y="178" width="130" height="40" rx="10" fill="#1c2836" stroke="#c792ea"/>
     <text x="703" y="203" fill="#e0c4f5" text-anchor="middle">Settings</text>
   </g>
-  <text x="80" y="246" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Cypher on every Ask step · path lights on the map · Apply is the only write that changes OWNS</text>
-  <text x="80" y="270" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Connectors: uploads, GitHub, Slack, Jira, Linear, Notion · model key and super prompt live in Settings</text>
+  <text x="80" y="246" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">Cypher on every Ask step  /  path lights on the map  /  Apply is the only write that changes OWNS</text>
+  <text x="80" y="270" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">Connectors: uploads, GitHub, Slack, Jira, Linear, Notion  /  model key and super prompt live in Settings</text>
 
   <path d="M640 296 v28" stroke="#f5c16c" stroke-width="2" fill="none"/>
   <polygon points="640,332 634,320 646,320" fill="#f5c16c"/>
-  <text x="656" y="324" fill="#f5c16c" font-family="ui-monospace, monospace" font-size="12">/api  ·  no FalkorDB credentials in the browser</text>
+  <text x="656" y="324" fill="#f5c16c" font-family="Consolas, Courier New, monospace" font-size="12">/api   /   no FalkorDB credentials in the browser</text>
 
   <!-- API -->
   <g filter="url(#shadow)">
     <rect x="56" y="344" width="1168" height="232" rx="18" fill="#141c26" stroke="#2c3b4d"/>
   </g>
-  <text x="80" y="374" fill="#f5c16c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">API</text>
-  <text x="128" y="374" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">FastAPI · two agents share state only through FalkorDB</text>
+  <text x="80" y="374" fill="#f5c16c" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">API</text>
+  <text x="128" y="374" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">FastAPI  /  two agents share state only through FalkorDB</text>
 
   <rect x="80" y="396" width="360" height="148" rx="14" fill="#1a2330" stroke="#3dab6e"/>
-  <text x="100" y="424" fill="#9fe0b8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700">Mapper</text>
-  <text x="100" y="448" fill="#c5ced8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Runs Cypher tools</text>
-  <text x="100" y="470" fill="#8b98a8" font-family="ui-monospace, monospace" font-size="12">recall_session</text>
-  <text x="100" y="488" fill="#8b98a8" font-family="ui-monospace, monospace" font-size="12">find_owner · find_experts</text>
-  <text x="100" y="506" fill="#8b98a8" font-family="ui-monospace, monospace" font-size="12">find_decision · write_finding</text>
-  <text x="100" y="528" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Writes a Finding on a Session</text>
+  <text x="100" y="424" fill="#9fe0b8" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Mapper</text>
+  <text x="100" y="448" fill="#c5ced8" font-family="Arial, Helvetica, sans-serif" font-size="13">Runs Cypher tools</text>
+  <text x="100" y="470" fill="#8b98a8" font-family="Consolas, Courier New, monospace" font-size="12">recall_session</text>
+  <text x="100" y="488" fill="#8b98a8" font-family="Consolas, Courier New, monospace" font-size="12">find_owner  /  find_experts</text>
+  <text x="100" y="506" fill="#8b98a8" font-family="Consolas, Courier New, monospace" font-size="12">find_decision  /  write_finding</text>
+  <text x="100" y="528" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">Writes a Finding on a Session</text>
 
   <rect x="460" y="396" width="360" height="148" rx="14" fill="#1a2330" stroke="#c792ea"/>
-  <text x="480" y="424" fill="#e0c4f5" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700">Clerk</text>
-  <text x="480" y="448" fill="#c5ced8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Reads the Finding from FalkorDB</text>
-  <text x="480" y="470" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Phrases only names on that path</text>
-  <text x="480" y="492" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">May write PROPOSES + Task</text>
-  <text x="480" y="514" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Never writes OWNS</text>
-  <text x="480" y="528" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">No path ’ I can't find a source.</text>
+  <text x="480" y="424" fill="#e0c4f5" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Clerk</text>
+  <text x="480" y="448" fill="#c5ced8" font-family="Arial, Helvetica, sans-serif" font-size="13">Reads the Finding from FalkorDB</text>
+  <text x="480" y="470" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">Phrases only names on that path</text>
+  <text x="480" y="492" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">May write PROPOSES + Task</text>
+  <text x="480" y="514" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="13">Never writes OWNS</text>
+  <text x="480" y="528" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">No path: I can't find a source.</text>
 
   <rect x="840" y="396" width="352" height="148" rx="14" fill="#1a2330" stroke="#4c78d4"/>
-  <text x="860" y="424" fill="#9db6ee" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="700">Connectors</text>
-  <text x="860" y="448" fill="#c5ced8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">Evidence in. Ownership stays off.</text>
-  <text x="860" y="470" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Upload · rules, then optional model</text>
-  <text x="860" y="488" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">GitHub · Jira · Linear · Notion</text>
-  <text x="860" y="506" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Slack bots · department scope</text>
-  <text x="860" y="528" fill="#8b98a8" font-family="ui-sans-serif, system-ui, sans-serif" font-size="12">Tokens stay on the server</text>
+  <text x="860" y="424" fill="#9db6ee" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="700">Connectors</text>
+  <text x="860" y="448" fill="#c5ced8" font-family="Arial, Helvetica, sans-serif" font-size="13">Evidence in. Ownership stays off.</text>
+  <text x="860" y="470" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">Upload  /  rules, then optional model</text>
+  <text x="860" y="488" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">GitHub  /  Jira  /  Linear  /  Notion</text>
+  <text x="860" y="506" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">Slack bots  /  department scope</text>
+  <text x="860" y="528" fill="#8b98a8" font-family="Arial, Helvetica, sans-serif" font-size="12">Tokens stay on the server</text>
 
   <path d="M640 576 v28" stroke="#f5c16c" stroke-width="2" fill="none"/>
   <polygon points="640,612 634,600 646,600" fill="#f5c16c"/>
-  <text x="656" y="604" fill="#f5c16c" font-family="ui-monospace, monospace" font-size="12">GRAPH.RO_QUERY  ·  GRAPH.QUERY  ·  $params, never pasted text</text>
+  <text x="656" y="604" fill="#f5c16c" font-family="Consolas, Courier New, monospace" font-size="12">GRAPH.RO_QUERY   /   GRAPH.QUERY   /   $params, never pasted text</text>
 
   <!-- FalkorDB -->
   <g filter="url(#shadow)">
     <rect x="56" y="624" width="1168" height="140" rx="18" fill="#16110b" stroke="#f5c16c"/>
   </g>
-  <text x="80" y="656" fill="#f5c16c" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">FALKORDB</text>
-  <text x="188" y="656" fill="#d7c39a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">the memory · take it away and there is nothing to ask</text>
-  <text x="80" y="688" fill="#f0e6d2" font-family="ui-sans-serif, system-ui, sans-serif" font-size="15" font-weight="600">One graph per company</text>
-  <text x="80" y="714" fill="#c5b89a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">OWNS with start / end · PROPOSES until Apply · DECIDES + REPLACED_BY · Session RECALLS the path</text>
-  <text x="80" y="738" fill="#c5b89a" font-family="ui-sans-serif, system-ui, sans-serif" font-size="13">System.department scopes Slack brains · Mapper and Clerk never share hidden notes</text>
+  <text x="80" y="656" fill="#f5c16c" font-family="Arial, Helvetica, sans-serif" font-size="13" font-weight="700" letter-spacing="1.4">FALKORDB</text>
+  <text x="188" y="656" fill="#d7c39a" font-family="Arial, Helvetica, sans-serif" font-size="13">the memory  /  take it away and there is nothing to ask</text>
+  <text x="80" y="688" fill="#f0e6d2" font-family="Arial, Helvetica, sans-serif" font-size="15" font-weight="600">One graph per company</text>
+  <text x="80" y="714" fill="#c5b89a" font-family="Arial, Helvetica, sans-serif" font-size="13">OWNS with start / end  /  PROPOSES until Apply  /  DECIDES + REPLACED_BY  /  Session RECALLS the path</text>
+  <text x="80" y="738" fill="#c5b89a" font-family="Arial, Helvetica, sans-serif" font-size="13">System.department scopes Slack brains  /  Mapper and Clerk never share hidden notes</text>
 </svg>

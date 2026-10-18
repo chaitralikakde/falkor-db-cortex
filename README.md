@@ -2,7 +2,9 @@
 
 A company graph on **FalkorDB**. Ask who owns this, or why you decided that, in the browser or in Slack. Every answer is a path the graph returned. If there is no path, Cortex says it cannot find a source. It does not guess.
 
-![Cortex architecture](docs/architecture.svg)
+<p align="center">
+  <img src="docs/architecture.png" alt="Cortex architecture" width="900"/>
+</p>
 
 ## What it is
 
