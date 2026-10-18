@@ -197,27 +197,101 @@ Connectors fill the same graph. Uploads, GitHub, Jira, Linear, and Notion add ev
 
 ## Run it
 
+Free **6379**, **8000**, **8080**, and **3002** on the host. Start **Docker Desktop** first.
+
+### 1. Clone
+
+```bash
+git clone https://github.com/chaitralikakde/falkor-db-cortex.git
+cd falkor-db-cortex
+```
+
+### 2. Start FalkorDB, API, and web
+
+```bash
+docker compose up -d --build
+```
+
+### 3. Wait until all three are up
+
+```bash
+docker compose ps
+```
+
+You want `falkordb` healthy, `api` and `web` running. If `api` is restarting:
+
+```bash
+docker compose logs -f api
+```
+
+### 4. Open
+
+| What | URL |
+|---|---|
+| Cortex | http://localhost:8080 |
+| API health | http://localhost:8000/health |
+| FalkorDB Browser | http://localhost:3002 |
+
+Lumen is seeded on first API boot. No tokens required.
+
+Ask: `Who owns Payments API?`
+
+### 5. Optional: connector / model keys
+
+Create `.env` next to `docker-compose.yml`. **Do not commit it.**
+
+```
+GITHUB_TOKEN=
+GITHUB_REPOSITORY=
+JIRA_SITE=
+JIRA_EMAIL=
+JIRA_API_TOKEN=
+LINEAR_API_KEY=
+NOTION_TOKEN=
+MODEL_API_KEY=
+```
+
+Restart API so it picks them up:
+
 ```bash
 docker compose up -d
 ```
 
-| What | Where |
-|---|---|
-| Web (Compose) | http://localhost:8080 |
-| Web (Next.js on the laptop) | http://localhost:3000 — keep Compose up so the API is running |
-| API | http://localhost:8000 |
-| FalkorDB Browser | http://localhost:3002 (optional) |
-| FalkorDB | port 6379, not opened from the browser |
+You can also paste GitHub / Jira / Linear / Notion tokens in **Connectors**. Slack `xoxb-` tokens are pasted only in **Connectors → Slack**.
 
-On API boot, if Lumen has no people, the seed is loaded. Settings, model keys, and connector tokens live on the `api_data` volume. They survive a restart. The browser never holds them.
+### 6. Optional: Next.js on the host (`:3000`)
 
-Optional in `.env` (gitignored): `GITHUB_TOKEN`, `JIRA_SITE`, `JIRA_EMAIL`, `JIRA_API_TOKEN`, `LINEAR_API_KEY`, `NOTION_TOKEN`, `MODEL_API_KEY`. Slack bot tokens are pasted in the UI.
+Keep Compose up for FalkorDB + API. Needs Node 22.
 
-Judges do not need keys. The Lumen seed is enough for the web questions. Slack department brains need bot tokens if you want that live.
+```bash
+cd web
+npm ci
+npm run dev
+```
+
+Open http://localhost:3000. `/api/*` is rewritten to http://localhost:8000.
+
+### 7. Stop
+
+```bash
+docker compose down
+```
+
+Volumes `falkordb_data` and `api_data` keep the graph. **Graph → Reset demo** reloads Lumen.
+
+Wipe volumes:
+
+```bash
+docker compose down -v
+```
+
+### Frontend-only (Vercel)
+
+The desk UI is also at [chaitralikakde/cortex-frontend](https://github.com/chaitralikakde/cortex-frontend). Import that repo in Vercel, set `API_URL` to a public Cortex API URL (no trailing slash), deploy. Docker above still runs FalkorDB and the API locally.
 
 ---
 
-## Demo on Lumen
+## Demo on Lumen (fake company data)
 
 **Web**
 
