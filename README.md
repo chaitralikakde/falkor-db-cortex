@@ -2,9 +2,62 @@
 
 A company graph on **FalkorDB**. Ask who owns this, or why you decided that, in the browser or in Slack. Every answer is a path the graph returned. If there is no path, Cortex says it cannot find a source. It does not guess.
 
-<p align="center">
-  <img src="docs/architecture.png" alt="Cortex architecture" width="900"/>
-</p>
+```mermaid
+flowchart TB
+  you["You"]
+
+  subgraph desk["Cortex"]
+    ask["Ask"]
+    graphPage["Graph + Apply"]
+    connectors["Connectors"]
+    answers["Answers"]
+    settings["Settings"]
+    canvas["Live map - FalkorDB Canvas"]
+  end
+
+  subgraph slack["Slack - three department brains"]
+    eng["Engineering-brain<br/>engineering systems only"]
+    des["Design-brain<br/>design systems only"]
+    mkt["Marketing-brain<br/>sales systems only"]
+  end
+
+  subgraph api["API"]
+    mapper["Mapper<br/>Cypher: recall, owner, experts, decision"]
+    clerk["Clerk<br/>reads the Finding, never writes OWNS"]
+    extract["Upload extract"]
+    sync["GitHub / Jira / Linear / Notion"]
+    bots["Slack poller"]
+    model["Optional model<br/>uploads only, quote or drop"]
+  end
+
+  subgraph falkor["FalkorDB - one graph per company"]
+    path["OWNS with start/end<br/>DECIDES + REPLACED_BY<br/>Session RECALLS the path"]
+  end
+
+  you --> ask
+  you --> eng
+  you --> des
+  you --> mkt
+  ask --> mapper
+  eng --> bots
+  des --> bots
+  mkt --> bots
+  bots --> mapper
+  mapper --> path
+  clerk --> path
+  path --> clerk
+  clerk --> ask
+  graphPage -->|"Apply is the only OWNS write"| path
+  connectors --> extract
+  connectors --> sync
+  connectors --> bots
+  extract --> model
+  model --> path
+  sync -->|"evidence, never OWNS"| path
+  settings --> model
+  path --> canvas
+  ask --> canvas
+```
 
 ## What it is
 
@@ -114,28 +167,31 @@ Apply is not Clerk. It is the admin button on Graph.
 
 ## Architecture
 
-```text
-Browser (Next.js)
-  Ask · Graph · Connectors · Answers · Settings
-  setup flow · context drawer · FalkorDB Canvas
-        |
-        |  /api/*  (rewritten; no FalkorDB credentials in the browser)
-        v
-API (FastAPI)
-  companies, settings, model keys, Slack / GitHub / Jira / Linear / Notion tokens
-        |
-        +--> Mapper     Cypher tools, writes Finding + Session
-        +--> Clerk      reads Finding, may write PROPOSES + Task, phrases the answer
-        +--> extract    rules, then optional model pass with a quoted-evidence check
-        +--> github_sync / jira_sync / linear_sync / notion_sync
-        +--> slack_bot  Web API polling, no SDK, one worker per bot
-        v
-FalkorDB
-  one graph per company
-  plus a small meta graph of companies
+```mermaid
+sequenceDiagram
+  actor You
+  participant Ask as Ask or Slack bot
+  participant Mapper
+  participant G as FalkorDB
+  participant Clerk
+  You->>Ask: who owns this / why did we decide / remember
+  Ask->>Mapper: same pipeline, Slack scoped by department
+  Mapper->>G: Cypher RO_QUERY
+  G-->>Mapper: path or empty
+  Mapper->>G: write Finding on a Session
+  Clerk->>G: read Finding
+  alt no path
+    Clerk-->>You: I cannot find a source
+  else path exists
+    Clerk-->>You: names + sources from the path
+    opt proposed new owner
+      Clerk->>G: PROPOSES + Task never OWNS
+      You->>G: Apply on Graph writes OWNS
+    end
+  end
 ```
 
-The map uses **FalkorDB Canvas**. The API returns nodes and links. The canvas draws them. A static picture of dots is not the demo — the second question, after Apply, is the proof the graph is doing the work.
+Connectors fill the same graph. Uploads, GitHub, Jira, Linear, and Notion add evidence. They never create `OWNS`. An optional model may read an uploaded file and add a fact only if it quotes a sentence that is actually in the file. Settings holds the super prompt, skills, and the model key. The live map is FalkorDB Canvas drawing the nodes the API returned. The second question after Apply is the proof the graph did the work.
 
 ---
 
